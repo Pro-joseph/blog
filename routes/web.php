@@ -36,6 +36,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard')->middleware('auth');
 
 Route::get('/create', [ArticleController::class, 'create'])->name('create')->middleware('auth');
+Route::post('/articles/autosave', [ArticleController::class, 'autosave'])->name('articles.autosave')->middleware('auth');
 Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store')->middleware('auth');
 
 Route::get('/edit/{article}', [ArticleController::class, 'edit'])->name('edit')->middleware('auth');
