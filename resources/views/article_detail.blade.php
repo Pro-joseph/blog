@@ -113,33 +113,7 @@ As we move forward into an era of edge computing and decentralized state, the pr
 </div>
 </section>
 </article>
-<section class="mt-16 md:mt-32 max-w-2xl mx-auto">
-<h3 class="font-headline font-bold text-lg md:text-xl mb-6 md:mb-8">Related Deep Dives</h3>
-<div class="grid gap-4 md:gap-8">
-<a class="group block" href="{{ route('article') }}">
-<div class="flex items-center gap-4 md:gap-6 p-3 md:p-4 rounded-xl transition-all duration-300 hover:bg-surface-container-low">
-<div class="w-16 md:w-24 h-16 md:h-24 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Related" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzi7Dn3RZI6RBP7JR4Q0k5kyl3IPEwEBXvyiO6zn6MDI1f8AqNWOcqflIsc_IAE9QCzNw8gwA0Y2j9sGDf3Wwf2ZbWMHpjoZb1XkXpfX4Os_vTnrdQEkwFKPTc2ZE5nQqvC9omfJ0WvgdR45wj1Tba62SxJUhFkPaUbRIfDoeRSUkyvZG-1GwmlgHcR__tyErPkvcu6LhbSbVReuu7k52W9oBWq2KO2xd4IK3x6x2QU-cxH5pvcnlJ2o_90VAfFXnElHvG7JftpgA"/>
-</div>
-<div>
-<span class="font-label text-[10px] font-black tracking-widest text-primary uppercase">Performance</span>
-<h4 class="font-headline font-bold text-base md:text-lg leading-snug group-hover:text-primary transition-colors">Optimizing Latency in High-Frequency Trading Stacks</h4>
-</div>
-</div>
-</a>
-<a class="group block" href="{{ route('article') }}">
-<div class="flex items-center gap-4 md:gap-6 p-3 md:p-4 rounded-xl transition-all duration-300 hover:bg-surface-container-low">
-<div class="w-16 md:w-24 h-16 md:h-24 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Related" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjvgJAZjDZeXEZYpnwCmR986osUYiLHrCjUeOID3wSQO0ZX4hNKBCcJANj4S_F4gF1JwkQdlVOugVB78NvWo5HYsOZKndnw2ZrIVSec933DiG77Q7XPDN7LBFuY_wbe5mtFtM2Bh--w7Dzxhlym2QnIQSW3jvGzBdMQXAi0_IBJZOZ40oJTpdELgXfs-ZjwfH70an_AB8oymm-DWJlZbhybkZmeUgxS2gHZrcJ2MUSiMA2bQ_UwwEMm1GEL8fRGZm8fnup5XqlO-s"/>
-</div>
-<div>
-<span class="font-label text-[10px] font-black tracking-widest text-primary uppercase">Security</span>
-<h4 class="font-headline font-bold text-base md:text-lg leading-snug group-hover:text-primary transition-colors">Zero-Trust Models for Cloud-Native Infrastructure</h4>
-</div>
-</div>
-</a>
-</div>
-</section>
+
 </main>
 <footer class="w-full py-8 md:py-12 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto border-t border-slate-200/10 tonal-shift bg-slate-100 dark:bg-slate-900 mt-12 md:mt-20">
 <div class="mb-4 md:mb-0 text-center md:text-left">
