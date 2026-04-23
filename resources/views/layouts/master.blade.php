@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>@yield('title', 'The Technical Editor')</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#dee0ff",
+                        "secondary": "#565c84",
+                        "on-surface-variant": "#454652",
+                        "on-primary-fixed": "#00105c",
+                        "inverse-surface": "#283044",
+                        "primary": "#24389c",
+                        "primary-fixed-dim": "#bac3ff",
+                        "surface-container-highest": "#dae2fd",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "on-primary": "#ffffff",
+                        "background": "#faf8ff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "surface-bright": "#faf8ff",
+                        "primary-fixed": "#dee0ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "surface-container": "#eaedff",
+                        "on-background": "#131b2e",
+                        "on-surface": "#131b2e",
+                        "surface-variant": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "outline": "#757684",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-primary-container": "#cacfff",
+                        "surface-container-high": "#e2e7ff",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-tertiary-container": "#ffc7a2",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#bac3ff",
+                        "tertiary-container": "#8f4700",
+                        "on-secondary-container": "#51577f",
+                        "outline-variant": "#c5c5d4",
+                        "surface-dim": "#d2d9f4",
+                        "surface-tint": "#4355b9",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "on-secondary-fixed": "#12183d",
+                        "on-tertiary-fixed": "#301400",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "primary-container": "#3f51b5",
+                        "tertiary": "#6c3400",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface": "#faf8ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#c9cffd",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb784"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    fontFamily: {
+                        headline: ["Inter"],
+                        body: ["Newsreader"],
+                        label: ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('css/shared.css') }}">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+    @stack('styles')
+</head>
+<body class="@yield('body-class', 'bg-surface text-on-surface font-body')">
+    @yield('content')
+    <script src="{{ asset('js/shared.js') }}"></script>
+    @stack('scripts')
+</body>
+</html>

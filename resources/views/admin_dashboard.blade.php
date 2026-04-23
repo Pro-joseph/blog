@@ -1,92 +1,10 @@
-<!DOCTYPE html>
+@extends('layouts.master')
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Technical Editor - Admin Dashboard</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "secondary-fixed": "#dee0ff",
-                        "secondary": "#565c84",
-                        "on-surface-variant": "#454652",
-                        "on-primary-fixed": "#00105c",
-                        "inverse-surface": "#283044",
-                        "primary": "#24389c",
-                        "primary-fixed-dim": "#bac3ff",
-                        "surface-container-highest": "#dae2fd",
-                        "secondary-fixed-dim": "#bec4f2",
-                        "on-primary": "#ffffff",
-                        "background": "#faf8ff",
-                        "on-tertiary-fixed-variant": "#713700",
-                        "surface-bright": "#faf8ff",
-                        "primary-fixed": "#dee0ff",
-                        "inverse-on-surface": "#eef0ff",
-                        "surface-container": "#eaedff",
-                        "on-background": "#131b2e",
-                        "on-surface": "#131b2e",
-                        "surface-variant": "#dae2fd",
-                        "error": "#ba1a1a",
-                        "outline": "#757684",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#f2f3ff",
-                        "on-primary-container": "#cacfff",
-                        "surface-container-high": "#e2e7ff",
-                        "tertiary-fixed": "#ffdcc6",
-                        "on-tertiary-container": "#ffc7a2",
-                        "error-container": "#ffdad6",
-                        "inverse-primary": "#bac3ff",
-                        "tertiary-container": "#8f4700",
-                        "on-secondary-container": "#51577f",
-                        "outline-variant": "#c5c5d4",
-                        "surface-dim": "#d2d9f4",
-                        "surface-tint": "#4355b9",
-                        "on-secondary-fixed-variant": "#3e446b",
-                        "on-secondary-fixed": "#12183d",
-                        "on-tertiary-fixed": "#301400",
-                        "on-primary-fixed-variant": "#293ca0",
-                        "primary-container": "#3f51b5",
-                        "tertiary": "#6c3400",
-                        "on-secondary": "#ffffff",
-                        "on-error": "#ffffff",
-                        "surface": "#faf8ff",
-                        "on-tertiary": "#ffffff",
-                        "secondary-container": "#c9cffd",
-                        "on-error-container": "#93000a",
-                        "tertiary-fixed-dim": "#ffb784"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "fontFamily": {
-                        "headline": ["Inter"],
-                        "body": ["Newsreader"],
-                        "label": ["Inter"]
-                    }
-                },
-            },
-        }
-    </script>
-<link rel="stylesheet" href="{{ asset('css/shared.css') }}">
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+@section('title', 'Admin Dashboard | The Technical Editor')
+
+@section('body-class', 'font-body selection:bg-primary-fixed selection:text-on-primary-fixed')
+
+@section('content')
 <aside class="fixed inset-y-0 left-0 z-40 flex flex-col py-6 md:py-8 bg-slate-50 dark:bg-slate-900 h-screen w-64 md:w-72 rounded-r-none border-r border-slate-200/20 shadow-xl dark:shadow-none transition-all hidden lg:flex">
 <div class="px-4 md:px-6 mb-8 md:mb-10 flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-2xl md:text-3xl" data-icon="terminal">terminal</span>
@@ -94,7 +12,7 @@
 </div>
 <div class="px-4 md:px-6 mb-6 md:mb-8 flex items-center gap-3 md:gap-4 tonal-layering bg-slate-100 dark:bg-slate-800/50 py-3 md:py-4 rounded-xl mx-3 md:mx-4">
 <div class="w-8 md:w-10 h-8 md:h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
-<img alt="Lead Architect" data-alt="Stylized portrait avatar of a professional software architect with glasses and a thoughtful expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Dk98RAUIcWoT4-37s1kcfNEMdtGWy42GhXZwDVv8lnvF8ckm8cyR8ija8SeqLjrf9dDf5v9dgZ_U3mQuXV0FPQsJnUbaS9I-GYeFjAHxxnwz1EOzq-MiQvvIhuYCOflmpTy8JHZHxPQIem3g62N0I9FoxBy_dTPkhkc5DX_X7VBR4gntEra3W9qERBI_G4WkaX08WEOORKAsZoyi8a6T61WRyNfUzO3nxaE0oWQ0LkCQU6pl3WBG9-Pd7t28S_eydR-3lrOAh38"/>
+<img alt="Lead Architect" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Dk98RAUIcWoT4-37s1kcfNEMdtGWy42GhXZwDVv8lnvF8ckm8cyR8ija8SeqLjrf9dDf5v9dgZ_U3mQuXV0FPQsJnUbaS9I-GYeFjAHxxnwz1EOzq-MiQvvIhuYCOflmpTy8JHZHxPQIem3g62N0I9FoxBy_dTPkhkc5DX_X7VBR4gntEra3W9qERBI_G4WkaX08WEOORKAsZoyi8a6T61WRyNfUzO3nxaE0oWQ0LkCQU6pl3WBG9-Pd7t28S_eydR-3lrOAh38"/>
 </div>
 <div>
 <p class="font-headline text-xs md:text-sm font-bold text-on-surface">Lead Architect</p>
@@ -102,40 +20,42 @@
 </div>
 </div>
 <nav class="flex-1 space-y-1">
-<a class="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 font-label text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 mx-2 hover:translate-x-1 transition-transform duration-200" href="#">
+<a class="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 font-label text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 mx-2 hover:translate-x-1 transition-transform duration-200" href="{{ route('dashboard') }}">
 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-                Dashboard
-            </a>
-<a class="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 font-label text-sm font-semibold tracking-wide bg-indigo-50 dark:bg-indigo-900/30 text-indigo-900 dark:text-indigo-100 rounded-lg mx-2 Active: opacity-90 scale-[0.99]" href="#">
+Dashboard
+</a>
+<a class="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 font-label text-sm font-semibold tracking-wide bg-indigo-50 dark:bg-indigo-900/30 text-indigo-900 dark:text-indigo-100 rounded-lg mx-2" href="{{ route('home') }}">
 <span class="material-symbols-outlined" data-icon="description">description</span>
-                Articles
-            </a>
+Articles
+</a>
 <a class="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 font-label text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 mx-2 hover:translate-x-1 transition-transform duration-200" href="#">
 <span class="material-symbols-outlined" data-icon="sell">sell</span>
-                Categories
-            </a>
+Categories
+</a>
 <a class="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 font-label text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 mx-2 hover:translate-x-1 transition-transform duration-200" href="#">
 <span class="material-symbols-outlined" data-icon="insights">insights</span>
-                Analytics
-            </a>
+Analytics
+</a>
 </nav>
 <div class="px-4 md:px-6 mt-auto">
-<button class="w-full flex items-center justify-center gap-2 py-2 md:py-3 text-xs md:text-sm font-bold font-label text-error hover:bg-error/5 rounded-lg transition-colors">
+<a href="{{ route('login') }}" class="w-full flex items-center justify-center gap-2 py-2 md:py-3 text-xs md:text-sm font-bold font-label text-error hover:bg-error/5 rounded-lg transition-colors">
 <span class="material-symbols-outlined" data-icon="logout">logout</span>
-                Sign Out
-            </button>
+Sign Out
+</a>
 </div>
 </aside>
-<!-- Mobile Header -->
 <header class="lg:hidden bg-surface/80 dark:bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 bg-surface-container-low/50 px-4 py-3">
 <div class="flex items-center justify-between">
+<a href="{{ route('home') }}" class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</span>
+<span class="font-bold">Editor.OS</span>
+</a>
 <button data-mobile-menu="mobile-sidebar">
 <span class="material-symbols-outlined">menu</span>
 </button>
 </div>
 </header>
-<!-- Mobile Sidebar -->
 <nav id="mobile-sidebar" class="lg:hidden fixed inset-0 z-50 bg-surface/95 backdrop-blur-xl p-4 hidden">
 <div class="flex justify-between items-center mb-6">
 <span class="material-symbols-outlined text-primary text-2xl" data-icon="terminal">terminal</span>
@@ -144,26 +64,26 @@
 </button>
 </div>
 <div class="flex flex-col gap-4">
-<a class="flex items-center gap-3 py-3 text-slate-600" href="#">Dashboard</a>
-<a class="flex items-center gap-3 py-3 text-indigo-900 font-bold" href="#">Articles</a>
+<a class="flex items-center gap-3 py-3 text-slate-600" href="{{ route('dashboard') }}">Dashboard</a>
+<a class="flex items-center gap-3 py-3 text-indigo-900 font-bold" href="{{ route('home') }}">Articles</a>
 <a class="flex items-center gap-3 py-3 text-slate-600" href="#">Categories</a>
-<a class="flex items-center gap-3 py-3 text-slate-600" href="#">Analytics</a>
+<a class="flex items-center gap-3 py-3 text-slate-600" href="{{ route('login') }}">Sign Out</a>
 </div>
 </nav>
 <main class="lg:ml-64 xl:ml-72 min-h-screen">
 <header class="bg-surface/80 dark:bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 no-border bg-surface-container-low/50">
 <div class="flex justify-between items-center max-w-7xl mx-auto px-10 h-20">
 <div class="flex items-center gap-4">
-<h1 class="text-2xl font-serif italic text-indigo-950 dark:text-indigo-50 Headlines: font-sans font-bold tracking-tight. Brand: font-serif italic.">The Technical Editor</h1>
+<a href="{{ route('home') }}" class="text-2xl font-serif italic text-indigo-950 dark:text-indigo-50">The Technical Editor</a>
 </div>
 <div class="flex items-center gap-6">
 <button class="material-symbols-outlined text-slate-500 hover:text-indigo-900 transition-colors" data-icon="search">search</button>
 <button class="material-symbols-outlined text-slate-500 hover:text-indigo-900 transition-colors" data-icon="notifications">notifications</button>
 <div class="h-8 w-[1px] bg-outline-variant/20"></div>
-<button class="flex items-center gap-2 group">
+<a href="{{ route('login') }}" class="flex items-center gap-2 group">
 <span class="material-symbols-outlined text-indigo-900 dark:text-indigo-400 text-3xl" data-icon="account_circle">account_circle</span>
 <span class="font-label text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Admin Panel</span>
-</button>
+</a>
 </div>
 </div>
 </header>
@@ -174,13 +94,10 @@
 <h2 class="text-5xl font-headline font-bold text-on-background tracking-tighter">Article Library</h2>
 <p class="text-lg text-slate-500 max-w-lg font-body italic leading-relaxed">Manage your technical publications, draft system specifications, and oversee the editorial workflow.</p>
 </div>
-<button class="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-on-primary rounded-lg font-headline font-bold overflow-hidden transition-all hover:shadow-2xl hover:shadow-primary/20 active:scale-95">
-<div class="absolute inset-0 bg-gradient-to-r from-primary to-primary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
-<span class="relative flex items-center gap-3">
+<a href="{{ route('create') }}" class="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-on-primary rounded-lg font-headline font-bold overflow-hidden transition-all hover:shadow-2xl hover:shadow-primary/20 active:scale-95">
 <span class="material-symbols-outlined" data-icon="add">add</span>
-                        Create New Article
-                    </span>
-</button>
+Create New Article
+</a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
 <div class="bg-surface-container-low p-6 rounded-xl space-y-2">
@@ -230,7 +147,7 @@
 </td>
 <td class="px-8 py-6 text-right">
 <div class="flex items-center justify-end gap-3">
-<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</button>
+<a href="{{ route('edit') }}" class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</a>
 <button class="p-2 text-slate-400 hover:text-error hover:bg-error-container transition-all rounded-lg material-symbols-outlined" data-icon="delete">delete</button>
 </div>
 </td>
@@ -256,7 +173,7 @@
 </td>
 <td class="px-8 py-6 text-right">
 <div class="flex items-center justify-end gap-3">
-<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</button>
+<a href="{{ route('edit') }}" class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</a>
 <button class="p-2 text-slate-400 hover:text-error hover:bg-error-container transition-all rounded-lg material-symbols-outlined" data-icon="delete">delete</button>
 </div>
 </td>
@@ -282,7 +199,7 @@
 </td>
 <td class="px-8 py-6 text-right">
 <div class="flex items-center justify-end gap-3">
-<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</button>
+<a href="{{ route('edit') }}" class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</a>
 <button class="p-2 text-slate-400 hover:text-error hover:bg-error-container transition-all rounded-lg material-symbols-outlined" data-icon="delete">delete</button>
 </div>
 </td>
@@ -308,7 +225,7 @@
 </td>
 <td class="px-8 py-6 text-right">
 <div class="flex items-center justify-end gap-3">
-<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</button>
+<a href="{{ route('edit') }}" class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</a>
 <button class="p-2 text-slate-400 hover:text-error hover:bg-error-container transition-all rounded-lg material-symbols-outlined" data-icon="delete">delete</button>
 </div>
 </td>
@@ -333,11 +250,11 @@
 <p class="font-serif text-base text-slate-600 dark:text-slate-400">© 2024 Technical Editor. Engineered for readability.</p>
 </div>
 <div class="flex gap-8">
-<a class="font-serif text-base text-slate-500 hover:text-indigo-500 transition-opacity hover:opacity-70" href="#">RSS Feed</a>
+<a class="font-serif text-base text-slate-500 hover:text-indigo-500 transition-opacity hover:opacity-70" href="{{ route('home') }}">RSS Feed</a>
 <a class="font-serif text-base text-slate-500 hover:text-indigo-500 transition-opacity hover:opacity-70" href="#">Privacy Policy</a>
 <a class="font-serif text-base text-slate-500 hover:text-indigo-500 transition-opacity hover:opacity-70" href="#">Terms of Service</a>
 <a class="font-serif text-base text-slate-500 hover:text-indigo-500 transition-opacity hover:opacity-70" href="#">GitHub</a>
 </div>
 </footer>
 </main>
-</body></html>
+@endsection

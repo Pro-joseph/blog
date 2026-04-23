@@ -1,0 +1,55 @@
+/* Shared CSS for The Technical Editor Blog */
+
+/* Material Symbols Outlined fallback */
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Mobile menu toggle */
+[data-mobile-menu] {
+    cursor: pointer;
+}
+
+/* Smooth transitions */
+a, button {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Focus states for accessibility */
+a:focus, button:focus {
+    outline: 2px solid #24389c;
+    outline-offset: 2px;
+}
+
+/* Responsive utilities */
+@media (max-width: 1023px) {
+    .lg\:hidden {
+        display: block !important;
+    }
+    .hidden.lg\:hidden {
+        display: none !important;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+    background-color: #dee0ff;
+    color: #00105c;
+}
