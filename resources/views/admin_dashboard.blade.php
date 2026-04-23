@@ -38,10 +38,13 @@ Analytics
 </a>
 </nav>
 <div class="px-4 md:px-6 mt-auto">
-<a href="{{ route('login') }}" class="w-full flex items-center justify-center gap-2 py-2 md:py-3 text-xs md:text-sm font-bold font-label text-error hover:bg-error/5 rounded-lg transition-colors">
+<form method="POST" action="{{ route('logout') }}">
+@csrf
+<button type="submit" class="w-full flex items-center justify-center gap-2 py-2 md:py-3 text-xs md:text-sm font-bold font-label text-error hover:bg-error/5 rounded-lg transition-colors">
 <span class="material-symbols-outlined" data-icon="logout">logout</span>
 Sign Out
-</a>
+</button>
+</form>
 </div>
 </aside>
 <header class="lg:hidden bg-surface/80 dark:bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 bg-surface-container-low/50 px-4 py-3">
@@ -67,7 +70,10 @@ Sign Out
 <a class="flex items-center gap-3 py-3 text-slate-600" href="{{ route('dashboard') }}">Dashboard</a>
 <a class="flex items-center gap-3 py-3 text-indigo-900 font-bold" href="{{ route('home') }}">Articles</a>
 <a class="flex items-center gap-3 py-3 text-slate-600" href="#">Categories</a>
-<a class="flex items-center gap-3 py-3 text-slate-600" href="{{ route('login') }}">Sign Out</a>
+<form method="POST" action="{{ route('logout') }}">
+@csrf
+<button type="submit" class="flex items-center gap-3 py-3 text-slate-600">Sign Out</button>
+</form>
 </div>
 </nav>
 <main class="lg:ml-64 xl:ml-72 min-h-screen">
@@ -80,10 +86,10 @@ Sign Out
 <button class="material-symbols-outlined text-slate-500 hover:text-indigo-900 transition-colors" data-icon="search">search</button>
 <button class="material-symbols-outlined text-slate-500 hover:text-indigo-900 transition-colors" data-icon="notifications">notifications</button>
 <div class="h-8 w-[1px] bg-outline-variant/20"></div>
-<a href="{{ route('login') }}" class="flex items-center gap-2 group">
+<div class="flex items-center gap-2 group">
 <span class="material-symbols-outlined text-indigo-900 dark:text-indigo-400 text-3xl" data-icon="account_circle">account_circle</span>
-<span class="font-label text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Admin Panel</span>
-</a>
+<span class="font-label text-sm font-bold text-on-surface group-hover:text-primary transition-colors">{{ Auth::user()->name }}</span>
+</div>
 </div>
 </div>
 </header>
@@ -102,15 +108,15 @@ Create New Article
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
 <div class="bg-surface-container-low p-6 rounded-xl space-y-2">
 <p class="font-label text-xs font-bold text-slate-500 uppercase tracking-widest">Total Articles</p>
-<p class="text-4xl font-headline font-black text-on-background">128</p>
+<p class="text-4xl font-headline font-black text-on-background">{{ $articles->count() }}</p>
 </div>
 <div class="bg-surface-container-low p-6 rounded-xl space-y-2">
 <p class="font-label text-xs font-bold text-slate-500 uppercase tracking-widest">Published</p>
-<p class="text-4xl font-headline font-black text-primary">94</p>
+<p class="text-4xl font-headline font-black text-primary">{{ $articles->where('published', true)->count() }}</p>
 </div>
 <div class="bg-surface-container-low p-6 rounded-xl space-y-2">
 <p class="font-label text-xs font-bold text-slate-500 uppercase tracking-widest">In Draft</p>
-<p class="text-4xl font-headline font-black text-tertiary">34</p>
+<p class="text-4xl font-headline font-black text-tertiary">{{ $articles->where('published', false)->count() }}</p>
 </div>
 </div>
 <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm border border-outline-variant/10">
@@ -126,115 +132,51 @@ Create New Article
 </tr>
 </thead>
 <tbody class="divide-y divide-outline-variant/10">
+@forelse($articles as $article)
 <tr class="hover:bg-surface-container-low/30 transition-colors group">
 <td class="px-8 py-6">
 <div class="flex flex-col">
-<span class="font-headline font-bold text-on-surface text-base group-hover:text-primary transition-colors">Architecting Resilient Microservices with Rust</span>
-<span class="text-xs text-slate-400 font-label">technical-architecture-rust-v2.md</span>
+<span class="font-headline font-bold text-on-surface text-base group-hover:text-primary transition-colors">{{ $article->title }}</span>
+<span class="text-xs text-slate-400 font-label">{{ $article->slug ?? 'article-'.$article->id.'.md' }}</span>
 </div>
 </td>
 <td class="px-8 py-6">
-<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold font-label">Backend</span>
+@if($article->category)
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold font-label">{{ $article->category->name }}</span>
+@else
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold font-label">Uncategorized</span>
+@endif
 </td>
 <td class="px-8 py-6">
 <div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-<span class="text-sm font-bold text-on-surface font-label">Published</span>
+<span class="w-2 h-2 rounded-full {{ $article->published ? 'bg-emerald-500' : 'bg-amber-500' }}"></span>
+<span class="text-sm font-bold text-on-surface font-label">{{ $article->published ? 'Published' : 'Draft' }}</span>
 </div>
 </td>
 <td class="px-8 py-6">
-<span class="text-sm text-slate-600 font-label">Oct 12, 2023</span>
+<span class="text-sm text-slate-600 font-label">{{ $article->created_at->format('M d, Y') }}</span>
 </td>
 <td class="px-8 py-6 text-right">
 <div class="flex items-center justify-end gap-3">
-<a href="{{ route('edit') }}" class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</a>
-<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container transition-all rounded-lg material-symbols-outlined" data-icon="delete">delete</button>
+<a href="{{ route('edit', $article->id) }}" class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</a>
+<form action="{{ route('article.destroy', $article->id) }}" method="POST" class="inline">
+@csrf
+@method('DELETE')
+<button type="submit" class="p-2 text-slate-400 hover:text-error hover:bg-error-container transition-all rounded-lg material-symbols-outlined" data-icon="delete">delete</button>
+</form>
 </div>
 </td>
 </tr>
-<tr class="hover:bg-surface-container-low/30 transition-colors group">
-<td class="px-8 py-6">
-<div class="flex flex-col">
-<span class="font-headline font-bold text-on-surface text-base group-hover:text-primary transition-colors">The Future of Edge Computing in 2024</span>
-<span class="text-xs text-slate-400 font-label">edge-computing-forecast.md</span>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold font-label">Trends</span>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-amber-500"></span>
-<span class="text-sm font-bold text-on-surface font-label">Draft</span>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm text-slate-600 font-label">Jan 05, 2024</span>
-</td>
-<td class="px-8 py-6 text-right">
-<div class="flex items-center justify-end gap-3">
-<a href="{{ route('edit') }}" class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</a>
-<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container transition-all rounded-lg material-symbols-outlined" data-icon="delete">delete</button>
-</div>
-</td>
+@empty
+<tr>
+<td colspan="5" class="px-8 py-12 text-center text-slate-500">No articles yet. <a href="{{ route('create') }}" class="text-primary hover:underline">Create your first article</a></td>
 </tr>
-<tr class="hover:bg-surface-container-low/30 transition-colors group">
-<td class="px-8 py-6">
-<div class="flex flex-col">
-<span class="font-headline font-bold text-on-surface text-base group-hover:text-primary transition-colors">Mastering React Server Components</span>
-<span class="text-xs text-slate-400 font-label">react-server-components-deep-dive.md</span>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold font-label">Frontend</span>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-<span class="text-sm font-bold text-on-surface font-label">Published</span>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm text-slate-600 font-label">Nov 28, 2023</span>
-</td>
-<td class="px-8 py-6 text-right">
-<div class="flex items-center justify-end gap-3">
-<a href="{{ route('edit') }}" class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</a>
-<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container transition-all rounded-lg material-symbols-outlined" data-icon="delete">delete</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-surface-container-low/30 transition-colors group">
-<td class="px-8 py-6">
-<div class="flex flex-col">
-<span class="font-headline font-bold text-on-surface text-base group-hover:text-primary transition-colors">Data Modeling for Distributed SQL Databases</span>
-<span class="text-xs text-slate-400 font-label">distributed-sql-modeling.md</span>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold font-label">Database</span>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-amber-500"></span>
-<span class="text-sm font-bold text-on-surface font-label">Draft</span>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm text-slate-600 font-label">Dec 15, 2023</span>
-</td>
-<td class="px-8 py-6 text-right">
-<div class="flex items-center justify-end gap-3">
-<a href="{{ route('edit') }}" class="p-2 text-slate-400 hover:text-primary hover:bg-primary-fixed transition-all rounded-lg material-symbols-outlined" data-icon="edit">edit</a>
-<button class="p-2 text-slate-400 hover:text-error hover:bg-error-container transition-all rounded-lg material-symbols-outlined" data-icon="delete">delete</button>
-</div>
-</td>
-</tr>
+@endforelse
 </tbody>
 </table>
 </div>
 <div class="bg-surface-container-low/20 px-8 py-6 flex items-center justify-between">
-<span class="text-sm text-slate-500 font-label">Showing 1 to 4 of 128 results</span>
+<span class="text-sm text-slate-500 font-label">Showing {{ $articles->count() }} article{{ $articles->count() !== 1 ? 's' : '' }}</span>
 <div class="flex items-center gap-2">
 <button class="p-2 rounded hover:bg-surface-container-high transition-colors material-symbols-outlined text-slate-400" data-icon="chevron_left">chevron_left</button>
 <button class="w-8 h-8 rounded bg-primary text-on-primary text-xs font-bold font-label">1</button>

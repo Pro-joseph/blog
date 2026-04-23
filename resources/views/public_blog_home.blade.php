@@ -56,66 +56,36 @@ Exploring the intersection of high-performance engineering and sophisticated int
 </section>
 <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 <div class="lg:col-span-8 flex flex-col gap-12 lg:gap-20">
+@forelse($articles as $article)
 <article class="group">
 <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
 <div class="w-full md:w-2/5 overflow-hidden rounded-xl bg-surface-container-low aspect-[4/3]">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a high-end mechanical keyboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIw20KADAB3qeUUAOxUEpXlXBCe9YTTQpr2sPXVES4W7FPRt09rQ-jCfdg2FDr1e5wGhoq0CT0zJi8V8lO64zSR8p0vFrklpcytOX_mUhI5ToaPBqGv_b1P0MY7qSwVaAy5WZnIGIpPQeMmoP7mv81ROyQ8KJrnaqYIJEWfZM8uP73BSGQMTZQVimYkVOddkBUiVpNv0qEapJtcPEPcnHQIDlhBONMAgRVOTt-IGt6SbiV3UFCcG8dNNzJ0HmujOi_PM3TNE_G-JY"/>
+@if($article->image)
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="{{ $article->title }}" src="{{ $article->image }}">
+@else
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Article image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIw20KADAB3qeUUAOxUEpXlXBCe9YTTQpr2sPXVES4W7FPRt09rQ-jCfdg2FDr1e5wGhoq0CT0zJi8V8lO64zSR8p0vFrklpcytOX_mUhI5ToaPBqGv_b1P0MY7qSwVaAy5WZnIGIpPQeMmoP7mv81ROyQ8KJrnaqYIJEWfZM8uP73BSGQMTZQVimYkVOddkBUiVpNv0qEapJtcPEPcnHQIDlhBONMAgRVOTt-IGt6SbiV3UFCcG8dNNzJ0HmujOi_PM3TNE_G-JY"/>
+@endif
 </div>
 <div class="w-full md:w-3/5">
 <div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
-<span class="bg-secondary-container text-on-secondary-container px-2 md:px-3 py-1 rounded-full text-xs font-bold tracking-wide font-label">LARAVEL</span>
-<time class="text-xs md:text-sm font-label text-outline">Oct 24, 2024</time>
+@if($article->category)
+<span class="bg-secondary-container text-on-secondary-container px-2 md:px-3 py-1 rounded-full text-xs font-bold tracking-wide font-label">{{ $article->category->name }}</span>
+@endif
+<time class="text-xs md:text-sm font-label text-outline">{{ $article->created_at->format('M d, Y') }}</time>
 </div>
-<h2 class="text-xl md:text-3xl font-bold tracking-tight text-on-background mb-3 md:mb-4 group-hover:text-primary transition-colors">Architecting Scalable Micro-Services with Laravel Octane</h2>
+<h2 class="text-xl md:text-3xl font-bold tracking-tight text-on-background mb-3 md:mb-4 group-hover:text-primary transition-colors">{{ $article->title }}</h2>
 <p class="text-sm md:text-lg text-on-surface-variant leading-relaxed mb-4 md:mb-6 font-body">
-High-concurrency environments require more than just standard scaling. Explore how Octane redefines the PHP request lifecycle for enterprise-grade performance.
+{{ Str::limit($article->content, 200) }}
 </p>
-<a class="inline-flex items-center text-primary font-bold tracking-tight hover:translate-x-2 transition-transform text-sm md:text-base" href="{{ route('article') }}">
+<a class="inline-flex items-center text-primary font-bold tracking-tight hover:translate-x-2 transition-transform text-sm md:text-base" href="{{ route('article', $article->id) }}">
 Read More <span class="material-symbols-outlined ml-1 md:ml-2 text-sm md:text-base" data-icon="arrow_forward">arrow_forward</span>
 </a>
 </div>
 </div>
 </article>
-<article class="group">
-<div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-<div class="w-full md:w-2/5 overflow-hidden rounded-xl bg-surface-container-low aspect-[4/3]">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract visualization of data flowing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7bkC4fQfVxwIGMtWeCxpLb924KzqHhK7T0mVQDHiQslS6sli34Ozv3aR_1zhHlPXH8gZa30G6SKFulJG40qZM5uPKhv13bRBShsdy9kXDHiIp7bhL2N8yjcqKQASpfEcmbo3CXAn-c1WlLyYgYApB6mxEOpCIjkYsgm9-1oLqlKCL8IRWnvxSDZwCIr5-UsxM0Kgb43CcLZ_3olK6fuaHcIHmvz2YSg3VHLpCoX8e-xVMz4m_NS8_6-lfWw3bAI8NmOm9sbuPPt4"/>
-</div>
-<div class="w-full md:w-3/5">
-<div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
-<span class="bg-secondary-container text-on-secondary-container px-2 md:px-3 py-1 rounded-full text-xs font-bold tracking-wide font-label">JAVASCRIPT</span>
-<time class="text-xs md:text-sm font-label text-outline">Oct 19, 2024</time>
-</div>
-<h2 class="text-xl md:text-3xl font-bold tracking-tight text-on-background mb-3 md:mb-4 group-hover:text-primary transition-colors">Beyond React: The Rise of Signal-Based State Management</h2>
-<p class="text-sm md:text-lg text-on-surface-variant leading-relaxed mb-4 md:mb-6 font-body">
-The Virtual DOM is no longer the only way. We examine the shift towards fine-grained reactivity and what it means for the next generation of web apps.
-</p>
-<a class="inline-flex items-center text-primary font-bold tracking-tight hover:translate-x-2 transition-transform text-sm md:text-base" href="{{ route('article') }}">
-Read More <span class="material-symbols-outlined ml-1 md:ml-2 text-sm md:text-base" data-icon="arrow_forward">arrow_forward</span>
-</a>
-</div>
-</div>
-</article>
-<article class="group">
-<div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-<div class="w-full md:w-2/5 overflow-hidden rounded-xl bg-surface-container-low aspect-[4/3]">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Professional workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPi3zj5XcLPz1F6iOw8o_jBNLowWwrJXdcwUUEEVQsIGRXPIzVr0DED8DGdNcURhwGniBdspexIuBTKMXwzzUTZSBfd0sRO6Hh2tgJwKojDkpXrSslCY786O-HshGgmfaRQZ2ewFHHJDjByeuQyRwqmpqiWzjRtX_YHcVSDep1JDHr2mBZGiTRcHYfo2--YyOcQswk8GGcJUB1Gw_4EMKJeMQb6vXddzbFtGKsXvGkwLwKhLI9kE5FLQhZvQH5Gwcz9Vgirqfsjmc"/>
-</div>
-<div class="w-full md:w-3/5">
-<div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
-<span class="bg-secondary-container text-on-secondary-container px-2 md:px-3 py-1 rounded-full text-xs font-bold tracking-wide font-label">CAREERS</span>
-<time class="text-xs md:text-sm font-label text-outline">Oct 12, 2024</time>
-</div>
-<h2 class="text-xl md:text-3xl font-bold tracking-tight text-on-background mb-3 md:mb-4 group-hover:text-primary transition-colors">The Staff Engineer Path: Bridging Code and Strategy</h2>
-<p class="text-sm md:text-lg text-on-surface-variant leading-relaxed mb-4 md:mb-6 font-body">
-Transitioning from a Senior role to Staff requires a fundamental shift in mindset. Learn how to amplify your impact without losing your technical edge.
-</p>
-<a class="inline-flex items-center text-primary font-bold tracking-tight hover:translate-x-2 transition-transform text-sm md:text-base" href="{{ route('article') }}">
-Read More <span class="material-symbols-outlined ml-1 md:ml-2 text-sm md:text-base" data-icon="arrow_forward">arrow_forward</span>
-</a>
-</div>
-</div>
-</article>
+@empty
+<p class="text-center text-on-surface-variant">No articles yet.</p>
+@endforelse
 </div>
 <aside class="lg:col-span-4 space-y-8 lg:space-y-12">
 <div class="bg-surface-container-low p-6 lg:p-8 rounded-2xl border border-outline-variant/10">
@@ -152,12 +122,11 @@ Read More <span class="material-symbols-outlined ml-1 md:ml-2 text-sm md:text-ba
 <h3 class="text-lg lg:text-2xl font-bold tracking-tight mb-2">Editor's Choice</h3>
 <p class="text-indigo-200/80 mb-4 lg:mb-6 text-xs lg:text-sm italic font-body">Curated technical deep-dives for the weekend architect.</p>
 <ul class="space-y-3 lg:space-y-4">
+@foreach($featuredArticles as $featured)
 <li class="border-b border-white/10 pb-3 lg:pb-4 last:border-0 last:pb-0">
-<a class="hover:text-primary-fixed-dim transition-colors block text-xs lg:text-sm font-semibold" href="{{ route('article') }}">The Anatomy of a Perfect API Response</a>
+<a class="hover:text-primary-fixed-dim transition-colors block text-xs lg:text-sm font-semibold" href="{{ route('article', $featured->id) }}">{{ $featured->title }}</a>
 </li>
-<li class="border-b border-white/10 pb-3 lg:pb-4 last:border-0 last:pb-0">
-<a class="hover:text-primary-fixed-dim transition-colors block text-xs lg:text-sm font-semibold" href="{{ route('article') }}">Why Your CSS Architecture is Failing</a>
-</li>
+@endforeach
 </ul>
 </div>
 <div class="absolute bottom-0 right-0 opacity-10 pointer-events-none">
