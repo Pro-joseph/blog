@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>@yield('title', 'The Technical Editor')</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -74,9 +75,10 @@
             },
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/shared.css') }}">
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.css">
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -86,9 +88,12 @@
     </style>
     @stack('styles')
 </head>
+
 <body class="@yield('body-class', 'bg-surface text-on-surface font-body')">
     @yield('content')
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
     <script src="{{ asset('js/shared.js') }}"></script>
     @stack('scripts')
 </body>
+
 </html>
